@@ -27,6 +27,24 @@
 	<script src="js/skel-layers.min.js"></script>
 	<script src="js/init.js"></script>
 	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.img-container {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
 </head>
 
 <body class="landing">
@@ -248,7 +266,7 @@
 
 
 	<section id="travel-blog" class="wrapper style1">
-		<div class="container 50%">
+		<div class="container 100%">
 
 			<h2>Europe Diaries</h2>
 			<!--
@@ -260,19 +278,23 @@
 						</div>
 			</div>
 		-->
-		<div class="row">
-		   <div class="column">
+		<div class="clearfix">
+		   <div class="img-container">
 		       <img src="gallery/road.jpg" alt="Snow" style="width:100%">
 		   </div>
 
-		   <div class="column">
+		   <div class="img-container">
 		       <img src="gallery/troyes.jpg" alt="Forest" style="width:100%">
 		   </div>
 
-		   <div class="column">
+		   <div class="img-container">
     			<img src="gallery/paris.jpg" alt="Mountains" style="width:100%">
  		   </div>
- 		   
+ 		     <div class="img-container">
+    			<img src="gallery/paris.jpg" alt="Mountains" style="width:100%">
+ 		   </div>
+
+
 		</div> 
 
 

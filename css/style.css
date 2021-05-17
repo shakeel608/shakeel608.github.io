@@ -279,7 +279,7 @@
 		color: #aaa;
 		position: relative;
 		margin: 0 0 1.5em 0;
-		text-transform: uppercase;
+		text-transform: normal;
 	}
 
 	header h2 + p {

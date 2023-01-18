@@ -21,14 +21,66 @@
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="icon" type="image/png" sizes="32x32" href="/inrialogo.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/inrialogo.png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/skel.min.js"></script>
 	<script src="js/skel-layers.min.js"></script>
 	<script src="js/init.js"></script>
 	<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+	<script>
+		var images = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg", "img7.jpg", "img8.jpg", "img9.jpg", "img10.jpg", "img11.jpg", "img12.jpg", "img13.jpg", "img14.jpg", "img15.jpg", "img16.jpg", "img17.jpg", "img18.jpg", "img19.jpg", "img20.jpg"];
+	var currentImage = 0;
+	function nextImage() {
+		currentImage = (currentImage + 1) % images.length;
+		document.getElementById("slider").src = images[currentImage];
+	}
+
+	function prevImage() {
+		currentImage = (currentImage - 1 + images.length) % images.length;
+		document.getElementById("slider").src = images[currentImage];
+	}
+
+	function pauseAnimation() {
+		document.getElementById("slider").classList.add("paused");
+	}
+	function resumeAnimation() {
+		document.getElementById("slider").classList.remove("paused");
+	}
+
+setInterval(nextImage, 1000);
+</script>
+
 
 <style>
+#slider{
+    transition: transform -0.1s ease-in-out;
+}
+img.paused {
+  animation-play-state: paused;
+}
+
+.img-container  {
+  float: left;
+  width: 700px;
+  height: 300px;
+  padding: 5px;
+  height: auto;
+  text-align: center;
+  white-space: nowrap;
+  animation: slide 1s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-5);
+  }
+}
+</style>
+<!--style>
 * {
   box-sizing: border-box;
 }
@@ -56,10 +108,11 @@
   clear: both;
   display: table;
 }
-</style>
+
+</style--!>
 </head>
 
-<body class="landing">
+<body class="landing" onload="startSlideshow()">
 
 	<!-- Header -->
 	<header id="header">
@@ -363,227 +416,61 @@
 			<ul class="actions">
 				<p>Pictures</p>
 			</ul>
-			
 		
 			<div class="clearfix">
 
 			   <div class="img-container">
-			       <img src="gallery/troyes.jpg" alt="Forest" style="width:100%">
-			       <p>UTT</p>
-			   </div>
-			   <div class="img-container">
-			       <img src="gallery/road.jpg" alt="Snow" class="img-container" style="width:100%">
-			       <p>Mathaeux</p>
-			   </div>
-			   <!-- Button to reset the Image size -->
-
-			   <div class="img-container">
-	    			<img src="gallery/paris.jpg" alt="Mountains" style="width:100%">
-	    			<p>Paris</p>
-	 		   </div>
-
-	 		   <div class="img-container">
-	    			<img src="gallery/pic.jpg" alt="Mountains" style="width:100%">
-	    			<p>UTT</p>
-	 		   </div> 
-	 		  
-	 		   <div class="img-container">
-	    			<img src="gallery/2020-06-07 19.55.14.jpg" alt="Mountains" style="width:100%">
-	    			<p>UTT</p>
-	 		   </div> 
-	 		   <div class="img-container">
-	    			<img src="gallery/IMG_9388.jpg" alt="Mountains" style="width:100%">
-	    			<p>Mathaeux</p>
-	 		   </div> 
-	 		  
-	 		   <div class="img-container">
-	    			<img src="gallery/IMG_7725.JPEG" alt="Mountains" style="width:100%">
-	    			<p>Paris</p>
-	 		   </div> 
-	 		   <div class="img-container">
-	    			<img src="gallery/IMG_8922.JPEG" alt="Mountains" style="width:100%">
-	    			<p>Nancy</p>
-	 		   </div> 
-	 		    
-	 		   <div class="img-container">
-	    			<img src="gallery/image_6487327.JPG" alt="Mountains" style="width:100%">
-	    			<p>Nancy</p>
-	 		   </div> 
-	 		   <div class="img-container">
+			       <img id="slider" src="img1.jpg" width="100%" onmouseover="pauseAnimation()" onmouseout="resumeAnimation()">
+			       <!--
+		  	     <img src="gallery/troyes.jpg" alt="Forest" style="width:100%">
+			       <img src="gallery/road.jpg" alt="Snow" style="width:100%">
+	    			<img src="gallery/paris.jpg" alt="Mountains1" style="width:100%">
+	    			<img src="gallery/pic.jpg" alt="Mountains2" style="width:100%">
+	    			<img src="gallery/2020-06-07 19.55.14.jpg" alt="Mountains3" style="width:100%">
+	    			<img src="gallery/IMG_9388.jpg" alt="Mountains4" style="width:100%">
+	    			<img src="gallery/IMG_7725.JPEG" alt="Mountains5" style="width:100%">
+	    			<img src="gallery/IMG_8922.JPEG" alt="Mountains6" style="width:100%">
+	    			<img src="gallery/image_6487327.JPG" alt="Mountains7" style="width:100%">
 	    			<img src="gallery/2020-06-07 22.17.35.jpg" alt="Mountains" style="width:100%">
-	    			<p>Troyes</p>
-	 		   </div> 
-	 		   <div class="img-container">
 	    			<img src="gallery/IMG_9337.jpg" alt="Mountains" style="width:100%">
-	    			<p>France</p>
-	 		   </div> 
-	 		   <div class="img-container">
 	    			<img src="gallery/IMG_8659.JPEG" alt="Mountains" style="width:100%">
-	    			<p>Paris</p>
-	 		   </div>  		   
-	 		    <div class="img-container">
 	    			<img src="gallery/thiefosse.JPG" alt="Mountains" style="width:100%">
-	    			<p>Thiefosse</p>
-	 		   </div> 
-
-	 		    <div class="img-container">
 	    			<img src="gallery/LeSyndicat.JPG" alt="Mountains" style="width:100%">
-	    			<p>Le Syndicat</p>
-	 		   </div> 
-
-	 		    <div class="img-container">
 	    			<img src="gallery/oldprague.JPG" alt="Mountains" style="width:100%">
-	    			<p>Old Prague</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/prague2.JPG" alt="Mountains" style="width:100%">
-	    			<p>Prague</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/charlesbrdige.JPG" alt="Mountains" style="width:100%">
-	    			<p>Charles Bridge</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/dresden.JPG" alt="Mountains" style="width:100%">
-	    			<p>Dresden, Germany</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/prague.JPG" alt="Mountains" style="width:100%">
-	    			<p>Prague</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/pahalgam.JPG" alt="Mountains" style="width:100%">
-	    			<p>Pahalgam, Kashmir</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/hamburg4.jpg" alt="Mountains" style="width:100%">
-	    			<p>Hamburg, Germany</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/hamburg2.jpg" alt="Mountains" style="width:100%">
-	    			<p>Hamburg</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/hamburg3.jpg" alt="Mountains" style="width:100%">
-	    			<p>Hamburg</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/vosgesmoun.JPG" alt="Mountains" style="width:100%">
-	    			<p>Vosges</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/et.JPG" alt="Mountains" style="width:100%">
-	    			<p>Eiffel Tower</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/hamburg1.jpg" alt="Mountains" style="width:100%">
-	    			<p>Germany</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/gerlux.JPG" alt="Mountains" style="width:100%">
-	    			<p>Luxembourg</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/gerardmer2.jpg" alt="Mountains" style="width:100%">
-	    			<p>Lac de Gerardmer, France</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/IMG_7531-1.JPEG" alt="Mountains" style="width:100%">
-	    			<p>Troyes</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/nice2.jpg" alt="Mountains" style="width:100%">
-	    			<p>Nice, City Centre</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/longemer.jpg" alt="Mountains" style="width:100%">
-	    			<p>Lake Longemer, France</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/antibes1.JPG" alt="Mountains" style="width:100%">
-	    			<p>Antibes</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/antibes2.jpg" alt="Mountains" style="width:100%">
-	    			<p>Antibes</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/antibes3.jpg" alt="Mountains" style="width:100%">
-	    			<p>Antibes</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/gerardmer.jpg" alt="Mountains" style="width:100%">
-	    			<p>Gerardmer Lake, Vosges</p>
-	 		   </div> 
-
-	 		    <div class="img-container">
 	    			<img src="gallery/swiss1.JPG" alt="Mountains" style="width:100%">
-	    			<p>Zurich, Switzerland</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/swiss2.JPG" alt="Mountains" style="width:100%">
-	    			<p>Zurich, Switzerland</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/serbiatram.jpg" alt="Mountains" style="width:100%">
-	    			<p>Belgrade, Serbia</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/strasbourg.jpg" alt="Mountains" style="width:100%">
-	    			<p>Strasbourg</p>
-	 		   </div> 
-	 		    <div class="img-container">
 	    			<img src="gallery/canr.JPG" alt="Mountains" style="width:100%">
-	    			<p>Gran Canaria, Spain</p>
-	 		   </div> 
 
+				-->
+				</div> 
+			       <a onclick="prevImage()"><i class="fas fa-arrow-left"></i></a>
+			       <a onclick="nextImage()"><i class="fas fa-arrow-right"></i></a>	
 			</div> 
 
 
-			<ul class="actions">
-				<p>Videos</p>
-			</ul>
 
-			<div class="clearfix">
-				<div class="img-container" style="margin-right: 450px">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/ANOLh8vNARg" title="YouTube video player" hspace = "20" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	    			<p>Road Trip France</p>
-	 		   </div>
-
-	 		   <!--<div class="img-container">
-	 		   	<iframe width="100%" height="315" src="https://www.youtube.com/embed/uA8CQj0Lamw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>	   		
-	 		   	</iframe>					 	    			
-	    		<p>Matheaux, France</p>
-			   </div> -->
-  
-	 		   <div class="img-container", style="margin-right: 225px">
-				   <iframe width="560" height="315" src="https://www.youtube.com/embed/vYe8KRn6DvI" title="YouTube video player" hspace = "20" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	    		<p>Czech Republic</p>
-
-	 		   </div>
-  	 		
-			<div class="img-container",  style="margin-right: 450px">
-	    			<iframe width="560" height="315" src="https://www.youtube.com/embed/rf43Jl7vjiw" title="YouTube video player" hspace = 20" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				<p>Botonical Garden, Nancy</p>
-	 		   </div>
-  	 		
-  	 		
-			<div class="img-container", style="margin-right: 225px">
-	    			<iframe width="560" height="315" src="https://www.youtube.com/embed/bL-6YmI1S_k" title="YouTube video player" hspace = "20" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				<p>Longemer Lake, GrandEst</p>
-	 		   </div>
-			<div class="img-container", style="margin-right: 450px">
-	    			<iframe width="560" height="315" src="https://www.youtube.com/embed/VbhWLc8-0x4" title="YouTube video player" hspace = "20" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				<p>Nice, France</p>
-	 		   </div>
-			<div class="img-container", style="margin-right: 225px">
-	    			<iframe width="560" height="315" src="https://youtube.com/embed/dLkFLoDWgDo" title="YouTube video player" hspace = "20" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				<p>Mustard Fields of Narcy</p>
-	 		   </div>
-  
-			</div>
-			
-		</div>
 	</section>
 
 

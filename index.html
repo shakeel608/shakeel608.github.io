@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-orange: #ff7e00;
-            --dark-orange: #e67300;
-            --light-blue: #1a5fb4;
-            --dark-blue: #1c3d5a;
+            /* Changed from Orange/Blue to Crimson/Blue */
+            --primary-crimson: #DC143C; /* Bright Crimson */
+            --dark-crimson: #A5102D;    /* Darker Crimson */
+            --light-blue: #1a5fb4;      /* Kept Blue */
+            --dark-blue: #1c3d5a;       /* Kept Dark Blue */
             --text-light: #f5f5f5;
             --text-dark: #333;
             --bg-light: #f8f9fa;
@@ -30,8 +31,9 @@
             line-height: 1.6;
         }
 
+        /* Updated the gradient color using the new primary-crimson variable */
         .gradient-text {
-            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            background: linear-gradient(135deg, var(--primary-crimson), var(--dark-blue));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -87,8 +89,9 @@
             transition: color 0.3s;
         }
 
+        /* Updated the gradient color using the new primary-crimson variable */
         nav ul li a:hover {
-            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            background: linear-gradient(135deg, var(--primary-crimson), var(--dark-blue));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -115,9 +118,10 @@
             margin: 0 auto 2rem;
         }
 
+        /* Updated the gradient color using the new primary-crimson variable */
         .btn {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            background: linear-gradient(135deg, var(--primary-crimson), var(--dark-blue));
             color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 30px;
@@ -144,12 +148,13 @@
             position: relative;
         }
 
+        /* Updated the gradient color using the new primary-crimson variable */
         .section-title::after {
             content: '';
             display: block;
             width: 80px;
             height: 4px;
-            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            background: linear-gradient(135deg, var(--primary-crimson), var(--dark-blue));
             margin: 10px auto;
             border-radius: 2px;
         }
@@ -262,7 +267,8 @@
             object-fit: cover;
             margin-bottom: 0.5rem;
             border: 3px solid;
-            border-image: linear-gradient(135deg, var(--primary-orange), var(--dark-blue)) 1;
+            /* Updated the gradient color using the new primary-crimson variable */
+            border-image: linear-gradient(135deg, var(--primary-crimson), var(--dark-blue)) 1;
         }
 
         .timeline {
@@ -271,11 +277,12 @@
             margin: 0 auto;
         }
 
+        /* Updated the gradient color using the new primary-crimson variable */
         .timeline::after {
             content: '';
             position: absolute;
             width: 7px;
-            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            background: linear-gradient(135deg, var(--primary-crimson), var(--dark-blue));
             top: 0;
             bottom: 0;
             left: 50%;
@@ -304,6 +311,7 @@
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
         }
 
+        /* Updated the gradient color using the new primary-crimson variable */
         .timeline-item::after {
             content: '';
             position: absolute;
@@ -311,7 +319,7 @@
             height: 7px;
             background: var(--bg-card);
             border: 4px solid;
-            border-image: linear-gradient(135deg, var(--primary-orange), var(--dark-blue)) 1;
+            border-image: linear-gradient(135deg, var(--primary-crimson), var(--dark-blue)) 1;
             border-radius: 50%;
             top: 1px;
             z-index: 1;
@@ -355,8 +363,9 @@
             transition: all 0.3s;
         }
 
+        /* Updated the gradient color using the new primary-crimson variable */
         .social-links a:hover {
-            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            background: linear-gradient(135deg, var(--primary-crimson), var(--dark-blue));
             color: white;
             transform: translateY(-3px);
         }

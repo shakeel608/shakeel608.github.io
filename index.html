@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shakeel Ahmad Sheikh - Academic Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-orange: #ff7e00;
+            --dark-orange: #e67300;
+            --light-blue: #1a5fb4;
+            --dark-blue: #1c3d5a;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #f8f9fa;
+            --bg-card: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--bg-card);
+            color: var(--text-dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--text-dark);
+            background-color: var(--bg-card);
+            margin-bottom: 2rem;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-card);
+            border-radius: 10px;
+            margin: 0.5rem;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+        }
+
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .paper-item {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .paper-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .paper-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-authors {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .paper-venue {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-year {
+            color: #888;
+        }
+
+        .coauthors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .coauthor {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            width: 150px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .coauthor img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+            border: 3px solid;
+            border-image: linear-gradient(135deg, var(--primary-orange), var(--dark-blue)) 1;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 7px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 10px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 25px;
+            background-color: var(--bg-card);
+            border-radius: 25px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 7px;
+            background: var(--bg-card);
+            border: 4px solid;
+            border-image: linear-gradient(135deg, var(--primary-orange), var(--dark-blue)) 1;
+            border-radius: 50%;
+            top: 1px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        footer {
+            background-color: var(--bg-card);
+            color: var(--text-dark);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 2rem;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--primary-orange), var(--dark-blue));
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap gradient-text"></i>
+                <span class="gradient-text">Shakeel A. Sheikh</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#papers">Publications</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- <section class="hero">
+        <div class="container">
+            <h1 class="gradient-text">Shakeel Ahmad Sheikh, PhD</h1>
+            <p>Applied AI Researcher, Healthcare<br>
+            AI for Oncology, Novartis AG, Switzerland <br>
+        <div class="paper-venue gradient-text">
+  Founder: 
+  <a href="https://jkiai.github.io/" target="_blank" style="text-decoration: none; color: inherit;">
+    Jammu & Kashmir Institute for Artificial Intelligence (JKIAI)
+  </a>
+</div>
+
+        <br>   
+         Founder, Kashmir Guidance
+        </p>
+
+            <a href=".resume.pdf" class="btn">Resume</a>
+        </div>
+    </section> -->
+
+    <section class="hero">
+        <div style="
+    display: inline-block; 
+    border-radius: 50%; 
+    padding: 5px; 
+	overflow: hidden;
+    background: linear-gradient(to right, darkorange, rgb(64, 64, 80));
+">
+    <img 
+        src="new_ws.png" 
+        alt="Profile" 
+        style="
+            width: 240px;
+            height: 240px; 
+            border-radius: 90%; 
+            object-fit: cover;
+            display: block;
+			 object-position: center 1%; 
+        "
+    >
+</div>
+
+        
+    <div class="container" style="text-align: center;">
+        
+        <!-- Profile Image -->
+        
+        <!-- Name -->
+        <h1 class="gradient-text">Shakeel Ahmad Sheikh, PhD</h1>
+        
+        <!-- Description -->
+        <p>
+            Applied AI Researcher, Healthcare<br>
+            AI for Oncology, Novartis AG, Switzerland<br>
+        </p>
+
+        <!-- JKIAI Founder -->
+        <div class="paper-venue gradient-text"
+                 style="font-size: 1.3em; font-weight: bold; margin-top: 15px; margin-bottom: 10px;">
+            
+            <a href="https://jkiai.github.io/" target="_blank" style="text-decoration: none; color: inherit;">
+                Jammu & Kashmir Institute for Artificial Intelligence (JKIAI)
+            </a> (Founder) <br>
+            
+        </div>
+            <br> 
+            <br>
+        
+        <!-- Resume Button -->
+        <a href="resume.pdf" class="btn">Resume</a>
+    </div>
+</section>
+
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title gradient-text">About Me</h2>
+            <!-- <div class="card">
+                I am Dr. Shakeel A. Sheikh, a researcher in AI for Healthcare, currently working as a Data Science Innovation Fellow at Novartis AG, Switzerland. My work focuses on advancing AI for target identification in oncology, 
+                including in-silico perturbation of scRNA-seq using foundation models and LLMs for proteomics and agentic workflows.
+
+                Previously, I served as a Postdoctoral Scientist at the Idiap Research Institute (EPFL, Switzerland) and Bielefeld University (Germany), where I worked on self-supervised learning, graph neural networks for healthcare 
+                applications. I hold a PhD from the University of Lorraine (Inria Research Institute), where I developed  deep learning systems (StutterNet) for audio-based stuttering detection, contributing several peer-reviewed publications in top 
+                journals and conferences (IEEE JBHI, Neurocomputing, IEEE JSTSP, ICASSP, EUSIPCO, ACM Multimedia).
+
+                My research spans multimodal deep learning, speech and audio processing, medical imaging, graph neural networks, and large language models, with applications across healthcare diagnostics, oncology, and low-resource NLP. 
+                I have been awarded prestigious fellowships and grants, including support from the Swiss National Science Foundation, German Humboldt Foundation, and multiple international summer schools (OxML, LxML, ALPS, DeepLearn).
+
+                Alongside research, I actively collaborate across academia and industry and review for leading IEEE/ACM journals. 
+
+                Beyond research, I actively collaborate across academia and industry, teach graduate-level deep learning courses, and review for leading IEEE/ACM journals. I am also the founder of two educational and AI-driven initiatives:
+
+Kashmir Guidance — supporting students pursuing international education
+
+Jammu & Kashmir Institute for Artificial Intelligence (JKIAI) — a newly launched initiative aimed at advancing AI research, mentorship, and innovation in the region
+
+                I am passionate about building impactful AI systems—spanning healthcare problems, and LLMs—that advance scientific discovery and improve human health.
+            </div> -->
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: auto; text-align: justify;">
+
+  <p>
+    I am Dr. Shakeel A. Sheikh, a researcher in AI for Healthcare, currently working as a Data Science Innovation Fellow at Novartis AG, Switzerland. My work focuses on advancing AI for target identification in oncology, 
+                including in-silico perturbation of scRNA-seq using foundation models and LLMs for proteomics and agentic workflows.
+  </p>
+<br>
+  <p>
+   Previously, I served as a Postdoctoral Scientist at the Idiap Research Institute (EPFL, Switzerland) and Bielefeld University (Germany), where I worked on self-supervised learning, graph neural networks for healthcare 
+                applications. I hold a PhD from the University of Lorraine (Inria Research Institute), where I developed  deep learning systems (StutterNet) for audio-based stuttering detection, contributing several peer-reviewed publications in top 
+                journals and conferences (IEEE JBHI, Neurocomputing, IEEE JSTSP, ICASSP, EUSIPCO, ACM Multimedia).
+
+                My research spans multimodal deep learning, speech and audio processing, medical imaging, graph neural networks, and large language models, with applications across healthcare diagnostics, oncology, and low-resource NLP. 
+                I have been awarded prestigious fellowships and grants, including support from the Swiss National Science Foundation, German Humboldt Foundation, and multiple international summer schools (OxML, LxML, ALPS, DeepLearn).
+
+  </p>
+<br>
+  <p>
+    Beyond research, I actively collaborate across academia and industry, teach graduate-level deep learning courses, and review for leading IEEE/ACM journals. I am also the founder of two educational and AI-driven initiatives:
+  </p>
+
+  <ul>
+    <li><div class="paper-venue gradient-text">Kashmir Guidance</div> — supporting students pursuing international education</li>
+<li>
+  <div class="paper-venue gradient-text">
+    <a href="https://jkiai.github.io/" target="_blank" rel="noopener noreferrer">
+      Jammu & Kashmir Institute for Artificial Intelligence (JKIAI)
+    </a>
+  </div>
+  — a newly launched initiative aimed at advancing AI research, mentorship, and innovation in the region
+</li>
+  </ul>
+
+  <p>
+    I am passionate about building impactful AI systems—spanning healthcare problems that drive scientific discovery and improve human health.
+  </p>
+
+</div>
+
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number gradient-text">407</span>
+                    <span class="stat-label">Citations</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number gradient-text">9</span>
+                    <span class="stat-label">h-index</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number gradient-text">9</span>
+                    <span class="stat-label">i10-index</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number gradient-text">10+</span>
+                    <span class="stat-label">Publications</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section id="papers">
+        <div class="container" >
+            <h2 class="section-title gradient-text">Publications</h2>
+            <div class="papers-grid" auto; text-align: justify;>
+                <div class="paper-item">
+                    <div class="paper-title gradient-text">Graph neural networks for parkinson’s disease detection</div>
+                    <div class="paper-authors">SA Sheikh,  Y Kaloga, M Sahidullah, I Kodrasi</div>
+                    <div class="paper-venue gradient-text">International Conference on Acoustics, Speech and Signal Processing (ICASSP)</div>
+                    <div class="paper-year">2025 | Cited by: 8</div>
+                </div>
+                <div class="paper-item">
+                    <div class="paper-title gradient-text">StutterNet: Stuttering detection using time delay neural network</div>
+                    <div class="paper-authors">SA Sheikh, M Sahidullah, F Hirsch, S Ouni</div>
+                    <div class="paper-venue gradient-text">2021 29th European Signal Processing Conference (EUSIPCO)</div>
+                    <div class="paper-year">2021 | Cited by: 90</div>
+                </div>
+                <div class="paper-item">
+                    <div class="paper-title gradient-text">Multiview Canonical Correlation Analysis for Automatic Pathological Speech Detection</div>
+                    <div class="paper-authors">SA Sheikh,  Y Kaloga, I Kodrasi</div>
+                    <div class="paper-venue gradient-text">International Conference on Acoustics, Speech and Signal Processing (ICASSP)</div>
+                    <div class="paper-year">2025 | Cited by: 2</div>
+                </div>
+                <div class="paper-item">
+                    <div class="paper-title gradient-text">Machine learning for stuttering identification: Review, challenges & future directions</div>
+                    <div class="paper-authors">SA Sheikh, M Sahidullah, F Hirsch, S Ouni</div>
+                    <div class="paper-venue gradient-text">Journal of Neurocomputing</div>
+                    <div class="paper-year">2021 | Cited by: 87</div>
+                </div>
+                <div class="paper-item">
+                    <div class="paper-title gradient-text">Overview of Automatic Speech Analysis and Technologies for Neurodegenerative Disorders: Diagnosis and Assistive Applications</div>
+                    <div class="paper-authors">SA Sheikh, M Sahidullah, I Kodrasi</div>
+                    <div class="paper-venue gradient-text">IEEE Journal of Selected Topics in Signal Processing</div>
+                    <div class="paper-year">2025 | Cited by: 7</div>
+                </div>
+                <div class="paper-item">
+                    <div class="paper-title gradient-text">Introducing ECAPA-TDNN and Wav2Vec2.0 embeddings to stuttering detection</div>
+                    <div class="paper-authors">SA Sheikh, M Sahidullah, F Hirsch, S Ouni</div>
+                    <div class="paper-venue gradient-text">arXiv preprint arXiv:2204.01564</div>
+                    <div class="paper-year">2022 | Cited by: 34</div>
+                </div>
+                <div class="paper-item">
+                    <div class="paper-title gradient-text">Advancing Stuttering Detection via Data Augmentation, Class-Balanced Loss and Multi-Contextual Deep Learning</div>
+                    <div class="paper-authors">SA Sheikh, M Sahidullah, F Hirsch, S Ouni</div>
+                    <div class="paper-venue gradient-text">IEEE Journal of Biomedical Informatics</div>
+                    <div class="paper-year">2023 | Cited by: 33</div>
+                </div>
+                 <div class="paper-item">
+                    <div class="paper-title gradient-text">End-to-End and Self-Supervised Learning for ComParE 2022 Stuttering Sub-Challenge</div>
+                    <div class="paper-authors">SA Sheikh, M Sahidullah, F Hirsch, S Ouni</div>
+                    <div class="paper-venue gradient-text">ACM Multimedia</div>
+                    <div class="paper-year">2022 | Cited by: 10</div>
+                </div>
+                <div class="paper-item">
+                    <div class="paper-title gradient-text">Robust stuttering detection via multi-task and adversarial learning</div>
+                    <div class="paper-authors">SA Sheikh, M Sahidullah, F Hirsch, S Ouni</div>
+                    <div class="paper-venue gradient-text">30th EUSIPCO Conference</div>
+                    <div class="paper-year">2022 | Cited by: 33</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://scholar.google.com/citations?hl=en&user=A7qpYKkAAAAJ&view_op=list_works" class="btn">View All Publications</a>
+            </div>
+            <h2 class="section-title gradient-text">Book Chapters</h2>
+            <div class="paper-item">
+                    <div class="paper-title gradient-text">Self-supervised learning for pathological speech detection</div>
+                    <div class="paper-authors">Shakeel A Sheikh</div>
+                    <div class="paper-venue gradient-text">Machine Leanring and Computational Social Sciences CRC, 2024</div>
+                    <!-- <div class="paper-year">2022 | Cited by: 33</div> -->
+                </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title gradient-text">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+					<div class="timeline-content">
+                        <h3 class="gradient-text">Data Science Innovation Fellow</h3>
+						<!-- <p>LLMs for Oncology</p> -->
+                        <p>Novartis NIBR Research </p>
+                        <p>Switzerland</p>
+                        <p>2024 - Present</p>
+                    </div>
+					</div>
+					<div class="timeline-item">
+					<div class="timeline-content">
+                        <h3 class="gradient-text">PostDoc Fellow</h3>
+                        <p>Idiap Research Institute, EPFL</p>
+                        <p>Martigy, Switzerland</p>
+                        <p>2023 - 2024</p>
+                    </div>
+					</div>
+					<div class="timeline-item">
+					<div class="timeline-content">
+                        <h3 class="gradient-text">PostDoc Fellow</h3>
+                        <p>Universität Bielefeld</p>
+                        <p>Germany</p>
+                        <p>2023 - 2023</p>
+                    </div>
+					</div>
+					<div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="gradient-text">PhD in Computer Science</h3>
+                        <p>Inria/Loria Research Institute</p>
+                        <p>Université De Lorraine, France</p>
+                        <p>2019 - 2023</p>
+                        <p> <a href="https://hal.univ-lorraine.fr/tel-04073284" Thesis: Deep Learning for Stuttering Detection class="btn">Thesis</a></p>
+                    </div>
+					<!-- </div> -->
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="gradient-text">MS in Computer Science</h3>
+                        <p></p>
+                        <div class="paper-venue gradient-text">Rank 1</div>
+                        <p>Istanbul University, Turkey</p>
+                        <p>2018 - 2019</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="gradient-text">M1 in Computer Science</h3>
+                        <p>Grenoble Alpes University, France</p>
+                        <p>2018</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="gradient-text">Bachelor's Degree in Computer Science & Engineering</h3>
+                        <!-- <p>Gold Medalist, Rank 1</p> -->
+                        <div class="paper-venue gradient-text">Rank 1, Gold Medalist</div>
+                        <p>University of Kashmir, India</p>
+                        <p>2011 - 2015</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title gradient-text">Professional Experience</h2>
+            <div class="card">
+                <h3 class="gradient-text">Data Science Innovation Fellow</h3>
+                <p><strong>Novartis Institute of Biomedical Research</strong> | 2024 - Present | Switzerland</p>
+                <p>Focus on AI applications in healthcare, particularly in Oncology.</p>
+                <p> <strong>Project:</strong><i> In Silico Perturbation of Single Cell (scRNA) Sequencing Using Foundation Models (LLMs) </i></p>
+                <strong>Project:</strong> <i>LLMs for Proteomics & Agentic Frameworks</i>
+
+            </div>
+            <div class="card">
+                <h3 class="gradient-text">PostDoc Research Scientist</h3>
+                <p><strong>Idiap Research Institute (EPFL)</strong> | Nov. 2023 – Dec. 2024 | Switzerland</p>
+                <p><strong>Project:</strong> ChaSpeePro, Swiss National Science Foundation</p>
+                <p><i>In collaboration with the University of Geneva and Geneva Hospital</i></p>
+                <p><strong>Funding:</strong> <i>Swiss National Science Foundation Fundingn</i></p>
+                <p><strong>PI:</strong> Dr. Ina Kodrasi</p>
+                <p><i>Description: Self-supervised Learning and Graph Neural Networks for Parkinson's Disease</i></p>
+            </div>
+
+            <div class="card">
+            <h3 class="gradient-text">PostDoc Research Scientist</h3>
+            <p><strong>Bielefeld University</strong> | March 2023 – Nov. 2023 | Germany</p>
+            <p><strong>Project:</strong> <i>Graph Deep Learning-Based Cortex Tumour Detection in Human Brain</i></p>
+            <p><strong>Funding:</strong> <i>German Humboldt Foundation</i></p>
+            <p><strong>PI:</strong> Prof. Yaochu Jin</p>
+        </div>
+
+
+            <div class="card">
+    <h3 class="gradient-text">NLP Research Intern</h3>
+    <p><strong>LIG Lab, Grenoble Alpes University</strong> | Jan. 2019 – June 2019 | France</p>
+    <p><strong>Project:</strong> <i>Neural Machine Translation for Low-Resource Languages Using BERT Embeddings</i></p>
+    <p><strong>Supervisor:</strong> Prof. Laurent Besascier</p>
+        </div>
+
+        <div class="card">
+    <h3 class="gradient-text">Database & QAC Engineer</h3>
+    <p><strong>BQE Software Inc.</strong> | India</p>
+    <p><i>Description: Data Conversion & Quality Assurance Check Using MySQL</i></p>
+</div>
+
+
+        </div>
+    </section>
+
+    <section id="research">
+        <div class="container">
+            <h2 class="section-title gradient-text">Research Interests</h2>
+            <div class="card">
+                <h3 class="gradient-text">Primary Research Areas</h3>
+                <ul>
+                    <li>Agentic AI</li>
+                    <li>AI for Healthcare</li>
+                    <li>AI for Low Resource Languages (Kashmiri)</li>
+
+                    
+                </ul>
+            </div>
+			<div class="card">
+                <h3 class="gradient-text">Invited Research Talks</h3>
+                <ul style="list-style-type: disc; color: #1E90FF; padding-left: 20px;">
+				<li>KU Leuven, Belgium (World Rank = 45)</li>
+				<li>King Faisal University, KSA</li>
+				<li>Alfaisal University, KSA</li>
+				<li>Idiap Research Institute (EPFL), Switzerland (World Rank = 14)</li>
+				<li>IIT Roorkee, India</li>
+				<li>IIT Jammu, India</li>
+				<li>Novartis Biomedical Research Institute, Switzerland</li>
+				<li>University of Kashmir, North Campus</li>
+				</ul>
+
+            </div>
+            <div class="container">
+            <h2 class="section-title gradient-text">Collaborators</h2>
+    
+
+	<div class="container">
+    <!-- <h2 class="section-title gradient-text">Collaborators</h2> -->
+
+    <div class="card">
+        <h3 class="gradient-text">Research Collaboratorion</h3>
+        <ul>
+            <li>
+                <strong class="gradient-text">Dr. Patrick Marmaroli</strong><br>
+                Microsoft, Vocametrix, Tallinn, Estonia<br>
+                JK Institute of Artificial Intelligence<br>
+                
+            </li>
+
+            <li>
+                <strong class="gradient-text">Prof. Björn W. Schuller</strong><br>
+                Technical University of  Munich, Germany<br>
+                Imperial College London, UK<br>
+            </li>
+
+            <li>
+                <strong class="gradient-text">Dr. Md Sahidullah</strong><br>
+                Institute for Advancing Intelligence, TCG CREST, India
+            </li>
+
+            <li>
+                <strong class="gradient-text">Prof. Slim Ouni</strong><br>
+                Université de Lorraine, LORIA, CNRS, Inria, France
+            </li>
+
+            <li>
+                <strong class="gradient-text">Dr. Fabrice Hirsch</strong><br>
+                Laboratoire Praxiling, France
+            </li>
+
+            <li>
+                <strong class="gradient-text">Dr. Ina Kodrasi</strong><br>
+                Idiap Research Institute, 
+                Switzerland
+            </li>
+
+            <li>
+                <strong class="gradient-text">Dr. Yacouba Kaloga</strong><br>
+                Idiap Research Institute (EPFL), Switzerland
+            </li>
+        </ul>
+    </div>
+</div>
+
+            
+        </div>
+    </section>
+
+   
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title gradient-text">Contact Me</h2>
+            <div class="card">
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 class="gradient-text">Get In Touch</h3>
+                        <p><i class="fas fa-envelope gradient-text"></i> shakeelzmail608@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt gradient-text"></i> Novartis Institute of Biomedical Research, Switzerland</p>
+                        <div class="social-links">
+                            <a href="https://scholar.google.com/citations?user=A7qpYKkAAAAJ&hl=en"><i class="fab fa-google"></i></a>
+                            <a href="https://www.linkedin.com/in/sheikhshakeel608"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/sheikhshakeel608"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <!-- <form>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="name" style="display: block; margin-bottom: 0.5rem;">Name</label>
+                                <input type="text" id="name" style="width: 100%; padding: 0.8rem; border-radius: 5px; border: 1px solid #ddd;">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="email" style="display: block; margin-bottom: 0.5rem;">Email</label>
+                                <input type="email" id="email" style="width: 100%; padding: 0.8rem; border-radius: 5px; border: 1px solid #ddd;">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label for="message" style="display: block; margin-bottom: 0.5rem;">Message</label>
+                                <textarea id="message" rows="4" style="width: 100%; padding: 0.8rem; border-radius: 5px; border: 1px solid #ddd;"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form> -->
+                        <form action="https://formspree.io/f/xzzwdebo" method="POST">
+                        <div style="margin-bottom: 1rem;">
+                            <label for="name" style="display: block; margin-bottom: 0.5rem;">Name</label>
+                            <input type="text" name="name" id="name" required style="width: 100%; padding: 0.8rem; border-radius: 5px; border: 1px solid #ddd;">
+                        </div>
+
+                        <div style="margin-bottom: 1rem;">
+                            <label for="email" style="display: block; margin-bottom: 0.5rem;">Email</label>
+                            <input type="email" name="email" id="email" required style="width: 100%; padding: 0.8rem; border-radius: 5px; border-radius: 5px; border: 1px solid #ddd;">
+                        </div>
+
+                        <div style="margin-bottom: 1rem;">
+                            <label for="message" style="display: block; margin-bottom: 0.5rem;">Message</label>
+                            <textarea name="message" id="message" rows="4" required style="width: 100%; padding: 0.8rem; border-radius: 5px; border: 1px solid #ddd;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 <span class="gradient-text">Shakeel Ahmad Sheikh</span>. All Rights Reserved.</p>
+            <p>Academic Portfolio</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation to cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and paper items
+        document.querySelectorAll('.card, .paper-item, .stat-item, .coauthor').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
